@@ -1,5 +1,11 @@
 package selenium;
 
+import java.io.IOException;
+import java.util.List;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -64,8 +70,29 @@ public class SeleniumTest {
 				e.printStackTrace();
 			}
 			System.out.println("false2");
-						
 			
+			//제품명,가격,행사정보 가져오기
+			List<WebElement> prodName = driver.findElements(By.className("prodName"));
+			List<WebElement> prodPrice = driver.findElements(By.className("prodPrice"));
+			List<WebElement> event = driver.findElements(By.cssSelector("div.prodListWrap>ul>li>ul>li"));
+			
+			System.out.println(prodName.get(6).getText());
+			System.out.println(prodPrice.get(6).getText());
+			System.out.println(event.get(6).getText());
+
+			//제품이미지 가져오기, 이미지파일명 가져오기
+			
+
+//			String nowUrl = driver.getCurrentUrl();
+			
+//			try {
+//				Document doc = Jsoup.connect(nowUrl).get();
+//				Elements contents = doc.select(".prodName");
+//				String text = contents.text();
+//				System.out.println(text);
+//			}catch (IOException e) {
+//				e.printStackTrace();
+//			}
 ////			WebElement plus = 
 ////			
 ////			String text = driver.getPageSource();
