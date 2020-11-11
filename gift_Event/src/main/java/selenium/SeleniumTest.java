@@ -75,12 +75,17 @@ public class SeleniumTest {
 			List<WebElement> prodName = driver.findElements(By.className("prodName"));
 			List<WebElement> prodPrice = driver.findElements(By.className("prodPrice"));
 			List<WebElement> event = driver.findElements(By.cssSelector("div.prodListWrap>ul>li>ul>li"));
+			List<WebElement> imgUrl = driver.findElements(By.cssSelector("div.photo>a>img"));
 			
 			System.out.println(prodName.get(6).getText());
 			System.out.println(prodPrice.get(6).getText());
 			System.out.println(event.get(6).getText());
+			System.out.println(imgUrl.get(6).getAttribute("src"));
+			System.out.println(imgUrl.get(6).getAttribute("alt"));
 
 			//제품이미지 가져오기, 이미지파일명 가져오기
+			//이미지 url가져오기
+			
 			
 
 //			String nowUrl = driver.getCurrentUrl();
