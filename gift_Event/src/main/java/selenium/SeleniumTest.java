@@ -1,11 +1,12 @@
 package selenium;
 
-import java.io.IOException;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.net.URL;
 import java.util.List;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
+import javax.imageio.ImageIO;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -77,14 +78,38 @@ public class SeleniumTest {
 			List<WebElement> event = driver.findElements(By.cssSelector("div.prodListWrap>ul>li>ul>li"));
 			List<WebElement> imgUrl = driver.findElements(By.cssSelector("div.photo>a>img"));
 			
+			System.out.println(prodName.size());
 			System.out.println(prodName.get(6).getText());
 			System.out.println(prodPrice.get(6).getText());
 			System.out.println(event.get(6).getText());
 			System.out.println(imgUrl.get(6).getAttribute("src"));
 			System.out.println(imgUrl.get(6).getAttribute("alt"));
 
-			//제품이미지 가져오기, 이미지파일명 가져오기
-			//이미지 url가져오기
+
+			for(int i=0; i<prodName.size(); i++) {
+			String imageName = imgUrl.get(i).getAttribute("alt");
+			String url = imgUrl.get(i).getAttribute("src");
+			URL pUrl = new URL(url);
+			BufferedImage jpg = ImageIO.read(pUrl);
+			File file = new File("C:\\testimg\\"+imageName);
+			ImageIO.write(jpg, "jpg", file);
+			}
+
+			
+//			
+//			//이미지파일명 가져오기
+//			String imageName = imgUrl.get(6).getAttribute("alt");
+//			//이미지 url가져오기
+//			String url = imgUrl.get(6).getAttribute("src");
+//
+//			URL pUrl = new URL(url);
+//			BufferedImage jpg = ImageIO.read(pUrl);
+//			//이미지 저장경로 지정
+//			File file = new File("C:\\testimg\\"+imageName);
+//			ImageIO.write(jpg, "jpg", file);
+//
+
+			
 			
 			
 
