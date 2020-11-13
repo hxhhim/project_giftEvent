@@ -4,14 +4,16 @@ import java.util.Date;
 
 public class productVO {
 	private String pcode;
-	private int price;
+	private String price;
 	private String item;
 	private String imageFileName;
 	private String pname;
 	private String event;
 	private String brand;
-	private Date creationDate;
-	private Date eventMonth;
+	private String creationDate;
+	private String eventMonth;
+	
+	
 	
 	
 	public String getPcode() {
@@ -20,10 +22,10 @@ public class productVO {
 	public void setPcode(String pcode) {
 		this.pcode = pcode;
 	}
-	public int getPrice() {
+	public String getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 	public String getItem() {
@@ -56,17 +58,23 @@ public class productVO {
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
-	public Date getCreationDate() {
+	public String getCreationDate() {
 		return creationDate;
 	}
-	public void setCreationDate(Date creationDate) {
+	public void setCreationDate(String creationDate) {
 		this.creationDate = creationDate;
 	}
-	public Date getEventMonth() {
+	public String getEventMonth() {
 		return eventMonth;
 	}
-	public void setEventMonth(Date eventMonth) {
+	public void setEventMonth(String eventMonth) {
 		this.eventMonth = eventMonth;
+	}
+	@Override
+	public String toString() {
+		return "productVO [pcode=" + pcode + ", price=" + price + ", item=" + item + ", imageFileName=" + imageFileName
+				+ ", pname=" + pname + ", event=" + event + ", brand=" + brand + ", creationDate=" + creationDate
+				+ ", eventMonth=" + eventMonth + "]";
 	}
 	
 }

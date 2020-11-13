@@ -1,0 +1,42 @@
+발생오류
+
+BufferedImage jpg = ImageIO.read(pUrl); <---오류발생 코드
+이미지주소 url 오류로 에러발생
+동작하던 코드 그대로 인데 발생함
+오류이후 재시동시 문제 없이 동작
+
+for문으로 크롤링후 객체 만들어서 인자값들 셋하고
+plist에 add시 java.lang.NullPointerException
+
+public static List<productVO> plist = new ArrayList<productVO>();
+
+초기화 안해서 plist에 add시 오류 발생
+
+java.lang.IndexOutOfBoundsException: Index: 166, Size: 166
+	at java.util.ArrayList.rangeCheck(Unknown Source)
+	at java.util.ArrayList.get(Unknown Source)
+	at selenium.SeleniumTest.crawl(SeleniumTest.java:145)
+	at selenium.SeleniumTest.main(SeleniumTest.java:27)
+
+스낵류 166번째에서 size 166 인데 index166이여서 오류
+
+prodName : 173
+prodPrice :173
+event	:166
+imgURL	:173
+갯수가 다르다
+
+과자류 신상품과/ 과자류 베스트 /cu best 3개상품이
+행사정보가 없는 만큼 갯수차이가 남
+
+예상 해결책은 실제 제품 영역안의 제품정보만 가져온다
+
+div id=dataTable 을 요소선택후
+그요소안에서 검색하여 해결
+
+item이 snack으로만 저장됨 k값이 증가가 안되는 현상
+
+pcode item 기준으로 한가지값만 들어가는 현상
+item은 여전히 snack으로 저장
+
+
