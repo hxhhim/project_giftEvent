@@ -59,11 +59,11 @@ public class SeleniumTest {
 		itemList.add(drink);
 		itemList.add(goods);
 		String[] itemName = {"snack","icecream","food","drink","goods"};
-		
+			int k=0;
 		
 
 		for(String item : itemList) {
-			int k = 0;
+			
 			
 		try {
 			System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
