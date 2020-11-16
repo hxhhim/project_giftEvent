@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+ <mapper namespace="mapper.product"	>
+ 	<resultMap id="productResult" type="productVO">
+ 		<result property="pcode" column="pcode" />
+ 		<result property="price" column="price" />
+ 		<result property="item" column="item" />
+ 		<result property="imageFileName" column="imageFileName" />
+ 		<result property="pname" column="pname" />
+ 		<result property="event" column="event" />
+ 		<result property="brand" column="brand" />
+ 		<result property="creationDate" column="creationDate" />
+ 		<result property="eventMonte" column="eventMonth" />
+ 	</resultMap>
+ 	
+ 	<select id="selectAllProductList" resultMap="productResult">
+ 		<![CDATA[
+ 			 SELECT pname, price, item, imageFileName, event, brand, eventMonth
+ 			 from p_product 
+ 		]]>
+ 	</select>
+ 	
+ 	<insert id="insertNewProduct" parameterType="java.util.Map">
+ 		<![CDATA[
+ 			insert into p_product (pcode, price, item, imagefilename, pname, event, brand, creationDate, eventMonth)
+ 			VALUES (#{pcode}, #{price}, #{item}, #{imagefilename}, #{pname},#{event}, #{brand}, sysdate, sysdate);
+ 		]]>
+ 	</insert>
+ </mapper>

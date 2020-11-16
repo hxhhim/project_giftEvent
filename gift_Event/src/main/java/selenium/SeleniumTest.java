@@ -18,14 +18,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.pro.gift.productVO.productVO;
+import com.pro.gift.product.VO.productVO;
 
 public class SeleniumTest {
 
-	public static void main(String[] args) {
-		SeleniumTest selTest = new SeleniumTest();
-		selTest.crawl();
-	}
+	
 
 	private WebDriver driver;
  
@@ -38,11 +35,9 @@ public class SeleniumTest {
 	public SeleniumTest() {
 		super();
 
-		
-
 	}
 
-	public void crawl() {
+	public List<productVO> crawl() {
 		//카테고리별 cssSelector
 		String snack = "#contents > div.cateWrap > ul > li.cate03 > span > a > img";
 		String icecream = "#contents > div.cateWrap > ul > li.cate04 > span > a > img";
@@ -101,9 +96,12 @@ public class SeleniumTest {
 							.findElement(By.cssSelector("#dataTable > div.prodListBtn > div.prodListBtn-w > a"));
 					addbtn.click();
 				}
+//			}catch (NosuchException e) {
+//				e.printStackTace();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 			System.out.println("false2");
 			
 			WebElement dataTable = driver.findElement(By.id("dataTable"));
@@ -114,10 +112,10 @@ public class SeleniumTest {
 			List<WebElement> event = dataTable.findElements(By.cssSelector("div.prodListWrap>ul>li>ul>li"));
 			List<WebElement> imgUrl = dataTable.findElements(By.cssSelector("div.photo>a>img"));
 
-			System.out.println(prodName.size());
-			System.out.println(prodPrice.size());
-			System.out.println(event.size());
-			System.out.println(imgUrl.size());
+//			System.out.println(prodName.size());
+//			System.out.println(prodPrice.size());
+//			System.out.println(event.size());
+//			System.out.println(imgUrl.size());
 //			System.out.println(prodName.get(6).getText());
 //			System.out.println(prodPrice.get(6).getText());
 //			System.out.println(event.get(6).getText());
@@ -129,8 +127,8 @@ public class SeleniumTest {
 				//fileName과 pcode 추출
 				String fileName =imgUrl.get(i).getAttribute("alt");
 				String pcode = fileName.substring(0,fileName.length()-4); 
-				System.out.println(fileName);
-				System.out.println(pcode);
+//				System.out.println(fileName);
+//				System.out.println(pcode);
 	
 				
 				//현재날짜,행사달 저장
@@ -141,8 +139,8 @@ public class SeleniumTest {
 				String eventMonth = eventMonthFormat.format(currentTime);
 				String imageName = imgUrl.get(i).getAttribute("alt");
 				
-				System.out.println(creationDate);
-				System.out.println(eventMonth);
+//				System.out.println(creationDate);
+//				System.out.println(eventMonth);
 				pVO.setPcode(pcode);
 				pVO.setPrice(prodPrice.get(i).getText());
 				pVO.setItem(itemName[k]);
@@ -209,10 +207,13 @@ public class SeleniumTest {
 	}
 		int count=0;
 		for(productVO pVO:plist) {
-			System.out.println(pVO);
+//			System.out.println(pVO);
 			count++;
 		}
 		System.out.println(count);
+	
+		return plist;
 	}
+	
 	
 }

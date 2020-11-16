@@ -1,7 +1,8 @@
-package com.pro.gift.productVO;
+package com.pro.gift.product.VO;
 
-import java.util.Date;
+import org.springframework.stereotype.Component;
 
+@Component("productVO")
 public class productVO {
 	private String pcode;
 	private String price;
