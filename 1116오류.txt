@@ -1,0 +1,44 @@
+404오류 bean creation 오류
+Component 어노테이션 미설정
+MultipartHttpServletRequest multipartRequest, 를 HttpServletRequest로 변경
+
+오류 : 
+
+ java.lang.IllegalStateException: 
+Current request is not of type 
+[org.springframework.web.multipart.MultipartHttpServletRequest]: 
+org.apache.catalina.connector.RequestFacade@50feb63c 
+
+해결 : 
+
+요청 할때 MultipartHttpServletRequest 요청이 아니기 때문에 발생 .
+
+이는 submit하는 form의 enctype이 multipart/form-data 인지 확인.
+
+
+HTTP 상태 500 – 내부 서버 오류
+
+Handler processing failed; nested exception is java.lang.NoClassDefFoundError: org/openqa/selenium/WebDriver
+
+org.springframework.web.util.NestedServletException: Handler processing failed; nested exception is java.lang.NoClassDefFoundError: org/openqa/selenium/WebDriver
+
+java.lang.NoClassDefFoundError: org/openqa/selenium/WebDriver
+
+java.lang.ClassNotFoundException: org.openqa.selenium.WebDriver
+
+selenium 드라이버를 찾지 못하는 상황으로 추측
+
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>3.141.59</version>
+</dependency>
+
+porm.xml dependency 추가
+
+for SQL []; SQL state [99999]; error code [17004]; 부적합한 열 유형: 1111;
+
+insert into p_product (pcode, price, item, imageFileName, pname, event, brand, creationDate, eventMonth)
+ 			VALUES (#{pcode}, #{price}, #{item}, #{imageFileName}, #{pname},#{event}, #{brand}, #{creationDate}, #{eventMonth})
+
+4번째 값 imageFileName을  imagefilename으로 values에 넣어서 null값이 들어가서 오류 발생 / 

@@ -37,7 +37,7 @@ public class SeleniumTest {
 
 	}
 
-	public List<productVO> crawl() {
+	public List<productVO> crawl(String WEB_DRIVER_ID,String WEB_DRIVER_PATH) {
 		//카테고리별 cssSelector
 		String snack = "#contents > div.cateWrap > ul > li.cate03 > span > a > img";
 		String icecream = "#contents > div.cateWrap > ul > li.cate04 > span > a > img";

@@ -11,5 +11,5 @@ public interface productController {
 	
 	public ModelAndView listproduct(HttpServletRequest request, HttpServletResponse response)throws Exception;
 	
-	public ResponseEntity addNewProduct(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)throws Exception;
+	public ResponseEntity addNewProduct(HttpServletRequest request, HttpServletResponse response)throws Exception;
 }

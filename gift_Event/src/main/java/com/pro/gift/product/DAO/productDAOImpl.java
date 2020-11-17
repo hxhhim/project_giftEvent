@@ -21,7 +21,8 @@ public class productDAOImpl implements productDAO {
 
 	@Override
 	public void insertNewProduct(Map productMap) throws DataAccessException {
-		sqlSession .insert("mapper.product.insertNewProduct", productMap);
+		System.out.println("dao"+productMap);
+		sqlSession.insert("mapper.product.insertNewProduct", productMap);
 		
 	}
 

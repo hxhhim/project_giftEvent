@@ -26,8 +26,8 @@
  	
  	<insert id="insertNewProduct" parameterType="java.util.Map">
  		<![CDATA[
- 			insert into p_product (pcode, price, item, imagefilename, pname, event, brand, creationDate, eventMonth)
- 			VALUES (#{pcode}, #{price}, #{item}, #{imagefilename}, #{pname},#{event}, #{brand}, sysdate, sysdate);
+ 			insert into p_product (pcode, price, item, imageFileName, pname, event, brand, creationDate, eventMonth)
+ 			VALUES (#{pcode}, #{price}, #{item}, #{imageFileName}, #{pname},#{event}, #{brand}, #{creationDate}, #{eventMonth})
  		]]>
  	</insert>
  </mapper>

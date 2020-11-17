@@ -6,4 +6,8 @@
 	<typeAliases>
 		<typeAlias type="com.pro.gift.product.VO.productVO"  alias="productVO" />
 	</typeAliases>
+	
+
+
+
 </configuration>

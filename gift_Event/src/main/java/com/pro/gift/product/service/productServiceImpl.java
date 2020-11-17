@@ -25,6 +25,7 @@ public class productServiceImpl implements productService {
 
 	@Override
 	public void addNewProduct(Map productMap) throws Exception {
+		System.out.println("service"+productMap);
 		productDAO.insertNewProduct(productMap);
 
 	}
