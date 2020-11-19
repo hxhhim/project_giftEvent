@@ -5,6 +5,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.pro.gift.product.VO.productVO"  alias="productVO" />
+		<typeAlias type="com.pro.gift.productBoard.VO.ArticleVO" alias="articleVO" />
 	</typeAliases>
 	
 

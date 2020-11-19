@@ -19,12 +19,13 @@ public class ProductBoardControllerImpl implements ProductBoardController {
 	private ProductBoardService productBoardService;
 		
 	@Override
-	@RequestMapping(value="/product/listProductArtilce.do",method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/productBoard/listProductArticles.do",method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView listArticles(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String)request.getAttribute("viewName");
 		List articlesList = productBoardService.listArticles();
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("articlesList", articlesList);
+		System.out.println(articlesList);
 		return mav;
 	}
 

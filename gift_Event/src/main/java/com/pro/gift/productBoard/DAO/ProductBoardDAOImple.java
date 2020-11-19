@@ -16,8 +16,8 @@ public class ProductBoardDAOImple implements ProductBoardDAO {
 	
 	@Override
 	public List selectAllArticlesList() throws DataAccessException {
-		List<ArticleVO> articlesList = articlesList = sqlSession.selectList("mapper.productBoard.selectAllArticlesList");
-		return null;
+		List<ArticleVO> articlesList = sqlSession.selectList("mapper.productBoard.selectAllArticlesList");
+		return articlesList;
 	}
 
 }

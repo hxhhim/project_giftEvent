@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+   <mapper namespace="mapper.productBoard">
+   		<resultMap type="articleVO" id="articesResult">
+   			<result property="brand" column="brand" />
+   			<result property="event" column="event" />
+   			<result property="imageFileName" column="imageFileName" />
+   			<result property="pname" column="pname" />
+   			<result property="price" column="price"/>
+   			<result property="pcode" column="pcode"/>
+   		</resultMap>
+   		
+   		<select id="selectAllArticlesList" resultMap="articesResult" >
+   			<![CDATA[
+   				SELECT brand, event, imageFileName, pname, price, pcode
+   				from p_product
+   			]]>
+   		</select>
+   </mapper>
