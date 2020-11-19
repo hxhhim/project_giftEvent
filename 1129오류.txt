@@ -1,0 +1,4 @@
+org.springframework.beans.factory.BeanCreationException
+Could not resolve type alias 'articleVO'
+
+alias 설정후 해결

@@ -49,6 +49,9 @@ public class productControllerImpl implements productController {
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("html/text; charset=utf-8");
+		
+		
+	    
 		Map<String, Object> productMap = new HashMap<String,Object>();
 		getproduct();
 		ResponseEntity resEnt = null;
@@ -87,6 +90,7 @@ public class productControllerImpl implements productController {
 	
 	
 	public void getproduct(){
+		
 	SeleniumTest selTest = new SeleniumTest();
 	 plist = selTest.crawl(WEB_DRIVER_ID,WEB_DRIVER_PATH);
 	

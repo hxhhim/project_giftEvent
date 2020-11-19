@@ -121,6 +121,8 @@ public class SeleniumTest {
 //			System.out.println(event.get(6).getText());
 //			System.out.println(imgUrl.get(6).getAttribute("src"));
 			
+			
+			
 			for(int i=0; i<prodName.size(); i++) {
 				
 				productVO pVO = new productVO();
@@ -164,7 +166,7 @@ public class SeleniumTest {
 				String url = imgUrl.get(j).getAttribute("src");
 				URL pUrl = new URL(url);
 				BufferedImage jpg = ImageIO.read(pUrl);
-				File file = new File("C:\\testimg\\" + imageName);
+				File file = new File( "C:\\project_giftEvent\\gift_Event\\src\\main\\webapp\\resources\\img\\"+ imageName);
 				ImageIO.write(jpg, "jpg", file);
 			}
 //			
