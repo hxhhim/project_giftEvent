@@ -1,0 +1,83 @@
+
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            body {
+                color: #333;
+                font-family: monospace;
+                margin: 0;
+                padding: 0;
+            }
+            .item {
+                margin: 0;
+                padding: 20px 0;
+                text-align: center;
+            }
+            .item:nth-child(even) {
+                background: #eee;
+            }
+            #sentinel {
+                height: 10px;
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="items"></div>
+        <p id="sentinel"></p>
+        <script>
+            const count = 20;
+            let index = 0;
+            let max = article.length;
+
+            function loadItems() {
+                let item = "";
+
+                for (let i = index + 1; i <= index + count; ++i) {
+                    if(index>100){
+                        break;
+                    }
+                    item = `<table id=product>
+                             <tr width=300>
+                                <td>${article[i].brand}</td>
+                                <td>${article[i].event}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><img src="${contextPath}/resources/img/${article[i].imageFileName}" width="200" height="200"></td>
+                            </tr>
+                            <tr>
+                                <td width=150 style="word-break:break-all">${article[i].pname}</td>
+                                <td rowspan="2">like</td>
+                            </tr>
+                            <tr>
+                                <td>${article[i].price}</td>
+                                
+                            </tr>
+                            </table>;`
+                    
+                    document.getElementById('items').innerHTML += item;
+                    
+                }
+
+               
+                index += count;
+            }
+
+            const io = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+                    loadItems();
+                });
+            });
+
+            io.observe(document.getElementById('sentinel'));
+
+            loadItems();
+        </script>
+    </body>
+</html>

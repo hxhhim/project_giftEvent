@@ -27,27 +27,65 @@ maximum-scale=1.0, minimum-scale=1.0">
         <div>
             <input type="text"  width="300" id="search">
             <button>검색</button>
+            <td>${articlesList[5].pname}</td>
         </div>
       <div id=twoline>
-       <c:forEach var="article" items="${articlesList}" >
-       <table id=product>
-        <tr width=300>
-            <td>${article.brand}</td>
-            <td>${article.event}</td>
-        </tr>
-        <tr>
-            <td colspan="2"><img src="${contextPath}/resources/img/${article.imageFileName}" width="200" height="200"></td>
-        </tr>
-        <tr>
-            <td width=150 style="word-break:break-all">${article.pname}</td>
-            <td rowspan="2">like</td>
-        </tr>
-        <tr>
-            <td>${article.price}</td>
+        <div id="items"></div>
+        <p id="sentinel"></p>
+        <script>
+            const count = 20;
+            let index = 0;
+            let max = 900;
+
+            function loadItems() {
+                let item = "";
+
+                for (let i = index ; i <= index + count; ++i) {
+                    if(index>max){
+                        break;
+                    }
+                    item = `<table id=product>
+                             <tr width=300>
+                                <td>${articlesList[i].brand}</td>
+                                <td>${articlesList[i].event}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><img src="${contextPath}/resources/img/${articlesList[i].imageFileName}" width="200" height="200"></td>
+                            </tr>
+                            <tr>
+                                <td width=150 style="word-break:break-all">${articlesList[i].pname}</td>
+                                <td rowspan="2">like</td>
+                            </tr>
+                            <tr>
+                                <td>${articlesList[i].price}</td>
+                                
+                            </tr>
+                            </table>`;
+                            console.log(index);
+                            console.log(i);
+                            console.log(max);
+                    document.getElementById('items').innerHTML += item;
+                    
+                }
+
+               
+                index += count;
+            }
             
-        </tr>
-         </table>
-    </c:forEach>
+            const io = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+                    loadItems();
+                });
+            });
+
+            io.observe(document.getElementById('sentinel'));
+
+            loadItems();
+        </script>
         </div>
    
 </body>
