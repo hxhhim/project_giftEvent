@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<c:set var="imgPath" value="C:\testimg\\" />
 <%
 	request.setCharacterEncoding("utf-8");
 %>
@@ -20,7 +21,7 @@
             <td>${article.event}</td>
         </tr>
         <tr>
-            <td colspan="2">imageFileName</td>
+            <td colspan="2"><img src="${contextPath}/resources/img/${article.imageFileName}" width="200" height="200"></td>
         </tr>
         <tr>
             <td>${article.pname}</td>
