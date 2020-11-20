@@ -1,0 +1,59 @@
+   <tr>
+                                <td colspan="2"><img src="${contextPath}/resources/img/${articlesList[i].imageFileName}" width="200" height="200"></td>
+                            </tr>
+                            <tr>
+                                <td width=150 style="word-break:break-all">${articlesList[i].pname}</td>
+                                <td rowspan="2">like</td>
+                            </tr>
+                            <tr>
+                                <td>${articlesList[i].price}</td>
+                                
+                            </tr>
+
+list<articleVO> articleList 에 articleVO로 20개를 넣어서 전달
+전달받은 list를 화면에 출력
+스크롤이 끝으로 이동하면
+ajax로 다음 20개를 요청
+전달받은 list를 화면에 출력
+반복
+
+20개씩 전달
+다음전달시에 21부터 20개 전달
+
+페이징 처리 관련 서치
+
+jsp에서 페이징관련 변수를 가지고 
+변수에 페이지당 갯수를 곱해서 
+시작과 끝을 정해서 요청
+startNo/ endNo
+
+select X.rnum, X.id, X.name, X.content, X.createdate
+
+from ( 
+
+    select rownum as rnum, A.id, A.name, A.content, A.createdate
+
+    from (
+
+        select id, name, content, createdate
+
+        from board
+
+        order by createdate) A
+
+    where rownum <= 30) X
+
+where X.rnum >= 21
+
+ select X.rnum, X.pname, x.item, x.price, x.event 
+ from (
+  select rownum as rnum, a.pname, a.item, a.price, a.event 
+  from ( 
+   select pname, item, price,event  
+    from p_product 
+     order by event)A 
+     where rownum <=30)X
+ where x.rnum >=21
+ ;
+
+rest Api 사용관련 책 29장 참고

@@ -14,6 +14,8 @@
 <title>행사 알림</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, 
 maximum-scale=1.0, minimum-scale=1.0">
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+
 <style>
     #product{
         display: inline-block;
@@ -32,42 +34,44 @@ maximum-scale=1.0, minimum-scale=1.0">
       <div id=twoline>
         <div id="items"></div>
         <p id="sentinel"></p>
-        <script>
+        
+        </div>
+   
+</body>
+<script>
             const count = 20;
             let index = 0;
             let max = 900;
-
+           
             function loadItems() {
                 let item = "";
-
                 for (let i = index ; i <= index + count; ++i) {
                     if(index>max){
                         break;
                     }
+                   
                     item = `<table id=product>
-                             <tr width=300>
-                                <td>${articlesList[i].brand}</td>
-                                <td>${articlesList[i].event}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2"><img src="${contextPath}/resources/img/${articlesList[i].imageFileName}" width="200" height="200"></td>
-                            </tr>
-                            <tr>
-                                <td width=150 style="word-break:break-all">${articlesList[i].pname}</td>
-                                <td rowspan="2">like</td>
-                            </tr>
-                            <tr>
-                                <td>${articlesList[i].price}</td>
-                                
-                            </tr>
-                            </table>`;
-                            console.log(index);
-                            console.log(i);
-                            console.log(max);
+                 	   <tr width=300>
+                 	   		
+                 		   <td>${articlesList[5].brand}</td>
+        		            <td>${articlesList[5].event}</td>
+       			         </tr>
+        		        <tr>
+        		            <td colspan="2"><img src="${contextPath}/resources/img/${articlesList[5].imageFileName}" width="200" height="200"></td>
+       			         </tr>
+       			         <tr>
+         		           <td width=150 style="word-break:break-all">${articlesList[5].pname}</td>
+       		             <td rowspan="2">like</td>
+      			          </tr>
+       			         <tr>
+        		            <td>${articlesList[5].price}</td>
+                    
+        		        </tr>
+        		        </table>`;
+                           
                     document.getElementById('items').innerHTML += item;
                     
                 }
-
                
                 index += count;
             }
@@ -77,16 +81,10 @@ maximum-scale=1.0, minimum-scale=1.0">
                     if (!entry.isIntersecting) {
                         return;
                     }
-
                     loadItems();
                 });
             });
-
             io.observe(document.getElementById('sentinel'));
-
             loadItems();
         </script>
-        </div>
-   
-</body>
 </html>

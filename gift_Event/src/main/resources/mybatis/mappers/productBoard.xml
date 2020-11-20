@@ -14,10 +14,26 @@
    			<result property="pcode" column="pcode"/>
    		</resultMap>
    		
+   		<!-- 전체제품검색 -->
    		<select id="selectAllArticlesList" resultMap="articesResult" >
    			<![CDATA[
    				SELECT brand, event, imageFileName, pname, price, pcode
    				from p_product
    			]]>
+   		</select>
+   		
+   		<!-- 페이지 검색 -->
+   		<select id="selectPagingArticlesList" resultMap="articesResult" parameterType="java.util.Map">
+			<![CDATA[
+				select X.rnum,x.pcode, x.imageFileName,x.brand, x.pname, x.item, x.price, x.event 
+				 from (
+  					select rownum as rnum,a.pcode, a.imageFileName,a.brand, a.pname, a.item, a.price, a.event 
+  					from ( 
+   						select pcode,imageFileName,brand, pname, item, price,event  
+    						from p_product 
+     							order by event)A 
+     								where rownum <=#{endNO})X
+ 										where x.rnum >=#{startNo} 
+			]]>   		
    		</select>
    </mapper>

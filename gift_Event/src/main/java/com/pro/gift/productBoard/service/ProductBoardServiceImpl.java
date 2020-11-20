@@ -21,5 +21,10 @@ public class ProductBoardServiceImpl implements ProductBoardService {
 		List<ArticleVO> articlesList = productBoardDAO.selectAllArticlesList();
 		return articlesList;
 	}
+	@Override
+	public List<ArticleVO> pagingArticle(String startNO, String endNO) throws Exception{
+		List<ArticleVO> pagingArticleList = productBoardDAO.selectPagingArticlesList(startNO,endNO);
+		return pagingArticleList;
+	}
 
 }

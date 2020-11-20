@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pro.gift.productBoard.VO.ArticleVO;
 import com.pro.gift.productBoard.service.ProductBoardService;
 
 @Controller("productBoardController")
@@ -27,6 +28,13 @@ public class ProductBoardControllerImpl implements ProductBoardController {
 		mav.addObject("articlesList", articlesList);
 		System.out.println(articlesList);
 		return mav;
+	}
+	
+	@RequestMapping(value="/productBoard/selectPagingArticlesList", method = {RequestMethod.GET, RequestMethod.POST})
+	public List<ArticleVO> selectPagingArticlesList(String startNO, String endNO, HttpServletRequest request, HttpServletResponse response)throws Exception{
+		List selpagingArticleList = productBoardService.pagingArticle(startNO,endNO);
+		
+		return selpagingArticleList;
 	}
 
 }
