@@ -1,0 +1,54 @@
+list를 json 배열로 변환
+
+json 배열로 으로 받아서 parse 
+
+
+향상된 for 문 사용법 재숙지
+
+json dependency 
+json lib 미설치
+
+검색,카테고리별 결과도 모두 무한스크롤을 하려면
+
+검색결과데이터를 20개씩 전송
+
+startNum, endNum int로 sql문으로 전송
+(string으로 넣어서 sql문 정상작동)
+
+startNum, endNum 을 json으로 전송
+
+list로 리턴값을 받음
+
+for문 사용 table 컬럼 생성
+
+function loadItems() 내부에 
+ajax로 20개씩 제품목록을 가져도록 한다.
+
+@RequestBody 로 json데이터를 자바객체로 바꿔서 받음
+인자값 가져오기 위해 \ 사용 
+
+다음 작업
+-회원가입
+-로그인
+-카테고리별 목록
+-검색
+
+회원가입
+
+form 작성 ajax 활용해서 비동기처리
+
+확인 후에 회원가입
+
+-id 입력
+ db 중복체크, 
+ 글자수 제한, 영문 혼합(정규식표현 사용)
+-pw 입력
+ 글자수 제한 8자리 , 영문 혼합(정규식표현 사용)
+-name 입력
+ 글자수 제한(중복허용)
+-email 입력
+ ##@##.com 형식입력 체크
+ 중복체크,이메일 인증(??) 
+
+
+
