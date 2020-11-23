@@ -33,7 +33,7 @@
     						from p_product 
      							order by event)A 
      								where rownum <=#{endNO})X
- 										where x.rnum >=#{startNo} 
+ 										where x.rnum >=#{startNO} 
 			]]>   		
    		</select>
    </mapper>

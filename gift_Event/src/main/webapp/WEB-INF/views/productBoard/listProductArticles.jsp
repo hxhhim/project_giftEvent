@@ -14,7 +14,7 @@
 <title>행사 알림</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, 
 maximum-scale=1.0, minimum-scale=1.0">
-<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="//code.jquery.com/jquery-latest.js"></script>
 
 <style>
     #product{
@@ -39,41 +39,57 @@ maximum-scale=1.0, minimum-scale=1.0">
    
 </body>
 <script>
+
+
             const count = 20;
-            let index = 0;
-            let max = 900;
+            let startNum = 1;
+            let endNum = 20;
+            let param  ;
+            
+            
            
             function loadItems() {
                 let item = "";
-                for (let i = index ; i <= index + count; ++i) {
-                    if(index>max){
-                        break;
-                    }
-                   
-                    item = `<table id=product>
-                 	   <tr width=300>
-                 	   		
-                 		   <td>${articlesList[5].brand}</td>
-        		            <td>${articlesList[5].event}</td>
-       			         </tr>
-        		        <tr>
-        		            <td colspan="2"><img src="${contextPath}/resources/img/${articlesList[5].imageFileName}" width="200" height="200"></td>
-       			         </tr>
-       			         <tr>
-         		           <td width=150 style="word-break:break-all">${articlesList[5].pname}</td>
-       		             <td rowspan="2">like</td>
-      			          </tr>
-       			         <tr>
-        		            <td>${articlesList[5].price}</td>
-                    
-        		        </tr>
-        		        </table>`;
+                      param ={ "startNum":startNum, "endNum":endNum};
+                      
+                    $.ajax({
+                        type:"POST",
+                        url:"http://localhost:8090/gift/productBoard/selectPagingArticlesList",
+                        data : JSON.stringify(param) ,
+                        contentType: "application/json",
+                        success: function(data){
+                            console.log(data);
+                            console.log(data.length);
+                            console.log(data[3]);
+                            
+                            data.forEach (function(article) {
+                                item = `<table id=product>
+                                            <tr width=300>
+                                                    <td>${data.brand}</td>
+                                                    <td>${article.event}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"><img src="${contextPath}/resources/img/${article.imageFileName}" width="200" height="200"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td width=150 style="word-break:break-all">${article.pname}</td>
+                                                    <td rowspan="2">like</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>${articles.price}</td>
+                                                </tr>
+        		                        </table>`;
                            
                     document.getElementById('items').innerHTML += item;
-                    
-                }
-               
-                index += count;
+                            })
+                        }, 
+                        error: function(){
+                            alert("error");
+                        }
+
+                    })
+                startNum += 20;
+                endNum += 20;
             }
             
             const io = new IntersectionObserver(entries => {
@@ -85,6 +101,6 @@ maximum-scale=1.0, minimum-scale=1.0">
                 });
             });
             io.observe(document.getElementById('sentinel'));
-            loadItems();
+             loadItems();
         </script>
 </html>
