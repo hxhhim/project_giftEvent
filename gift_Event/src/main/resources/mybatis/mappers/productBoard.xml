@@ -31,7 +31,7 @@
   					from ( 
    						select pcode,imageFileName,brand, pname, item, price,event  
     						from p_product 
-     							order by event)A 
+     							order by pname)A 
      								where rownum <=#{endNO})X
  										where x.rnum >=#{startNO} 
 			]]>   		

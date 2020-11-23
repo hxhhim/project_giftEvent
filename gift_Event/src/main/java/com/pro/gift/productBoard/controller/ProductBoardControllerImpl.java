@@ -38,14 +38,11 @@ public class ProductBoardControllerImpl implements ProductBoardController {
 	
 	@RequestMapping(value="/productBoard/selectPagingArticlesList", method = {RequestMethod.GET, RequestMethod.POST})
 	public List<ArticleVO> selectPagingArticlesList(@RequestBody Map num, HttpServletRequest request, HttpServletResponse response)throws Exception{
-		
+				
 		String startNO = Integer.toString((Integer)num.get("startNum"));
 		String endNO = Integer.toString((Integer)num.get("endNum"));
-		
-		System.out.println(startNO);
-		System.out.println(endNO);
+				
 		List selpagingArticleList = productBoardService.pagingArticle(startNO,endNO);
-		
 		return selpagingArticleList;
 	}
 

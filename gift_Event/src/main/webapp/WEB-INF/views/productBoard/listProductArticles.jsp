@@ -29,7 +29,7 @@ maximum-scale=1.0, minimum-scale=1.0">
         <div>
             <input type="text"  width="300" id="search">
             <button>검색</button>
-            <td>${articlesList[5].pname}</td>
+           
         </div>
       <div id=twoline>
         <div id="items"></div>
@@ -40,14 +40,11 @@ maximum-scale=1.0, minimum-scale=1.0">
 </body>
 <script>
 
-
             const count = 20;
             let startNum = 1;
             let endNum = 20;
             let param  ;
-            
-            
-           
+                       
             function loadItems() {
                 let item = "";
                       param ={ "startNum":startNum, "endNum":endNum};
@@ -58,38 +55,41 @@ maximum-scale=1.0, minimum-scale=1.0">
                         data : JSON.stringify(param) ,
                         contentType: "application/json",
                         success: function(data){
-                            console.log(data);
-                            console.log(data.length);
-                            console.log(data[3]);
-                            
-                            data.forEach (function(article) {
+                                                       
+                            for (let i=0 ;i<data.length; i++){
+                                let brand = data[i].brand;
+                                let event = data[i].event;
+                                let imageFileName = data[i].imageFileName;
+                                let pname = data[i].pname;
+                                let price = data[i].price;
+                                
                                 item = `<table id=product>
                                             <tr width=300>
-                                                    <td>${data.brand}</td>
-                                                    <td>${article.event}</td>
+                                                    <td>\${brand}</td>
+                                                    <td>\${event}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2"><img src="${contextPath}/resources/img/${article.imageFileName}" width="200" height="200"></td>
+                                                    <td colspan="2"><img src="${contextPath}/resources/img/\${imageFileName}" width="200" height="200"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td width=150 style="word-break:break-all">${article.pname}</td>
+                                                    <td width=150 style="word-break:break-all">\${pname}</td>
                                                     <td rowspan="2">like</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>${articles.price}</td>
+                                                    <td>\${price}</td>
                                                 </tr>
         		                        </table>`;
                            
                     document.getElementById('items').innerHTML += item;
-                            })
+                            }
                         }, 
                         error: function(){
                             alert("error");
                         }
 
                     })
-                startNum += 20;
-                endNum += 20;
+                startNum += count;
+                endNum += count;
             }
             
             const io = new IntersectionObserver(entries => {
