@@ -26,6 +26,7 @@ public class ProductBoardDAOImple implements ProductBoardDAO {
 		Map<String,String> startEndNum = new HashMap<String,String>();
 		startEndNum.put("startNO",startNO);
 		startEndNum.put("endNO",endNO);
+		
 		List<ArticleVO> selectPagingArticlesList = sqlSession.selectList("mapper.productBoard.selectPagingArticlesList",startEndNum);
 		return selectPagingArticlesList;
 	}

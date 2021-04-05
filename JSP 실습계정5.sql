@@ -15,9 +15,13 @@ CREATE TABLE p_product(
     CREATE TABLE likeList(
         id varchar2(50)CONSTRAINT likeList_id_NN NOT NULL ,
         pcode varchar2(100) ,
-        CONSTRAINT likeList_pcode_FK FOREIGN KEY(pcode) REFERENCES p_product(pcode)
+        CONSTRAINT likeList_pcode_FK FOREIGN KEY(pcode) REFERENCES p_product(pcode),
+        CONSTRAINT likeList_id_FK FOREIGN KEY(id) REFERENCES p_member(id)
     );
     DESC likeList;
+    drop table likeList; 
+    
+
     
     CREATE TABLE p_member(
         id varchar2(50) CONSTRAINT p_member_id_NN NOT NULL,
